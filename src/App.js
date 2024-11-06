@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+
+import {Box, Shoe, TShirt, Innomize} from "./demo";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [tab, setTab] = useState("box");
+
+    return (
+        <div>
+            <div className="tabs">
+                <button onClick={() => setTab("box")}>Box</button>
+                <button onClick={() => setTab("circle")}>Circle</button>
+                <button onClick={() => setTab("t-shirt")}>T-shirt</button>
+                <button onClick={() => setTab("shoe")}>Shoe</button>
+                <button onClick={() => setTab("office")}>Innomize</button>
+            </div>
+            <div id="canvas-container">
+                {tab === "box" && <Box position={[0, 0, 0]} />}
+                {tab === "t-shirt" && <TShirt />}
+                {tab === "shoe" && <Shoe />}
+                {tab === "office" && <Innomize />}
+            </div>
+        </div>
+    );
 }
 
 export default App;
